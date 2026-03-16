@@ -15,18 +15,15 @@ export const DiceGameWidget = () => {
 
   const [visible, setVisible] = useState(false);
 
-  const lastGame = history[0];
-  const shouldShowAlert = !!lastGame && !isRolling;
-
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (!shouldShowAlert) return;
+    if (isRolling) return;
+
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
-
     const showTimer = setTimeout(() => {
       setVisible(true);
     }, 0);
@@ -39,7 +36,7 @@ export const DiceGameWidget = () => {
       clearTimeout(showTimer);
       clearTimeout(hideTimer);
     };
-  }, [shouldShowAlert]);
+  }, [isRolling]);
 
   return (
     <Box
