@@ -7,7 +7,7 @@ import { ConditionSelector } from '@features/choose-condition/ui/ConditionSelect
 import { PlayButton } from '@features/play-dice/ui/PlayButton';
 import { Box, Collapse } from '@mui/material';
 import { NumberSlider } from '@shared/ui/NumberSlider';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const DiceGameWidget = () => {
   const history = useGameStore(s => s.history);
@@ -18,8 +18,14 @@ export const DiceGameWidget = () => {
   const lastGame = history[0];
   const shouldShowAlert = !!lastGame && !isRolling;
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
     if (!shouldShowAlert) return;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
     const showTimer = setTimeout(() => {
       setVisible(true);

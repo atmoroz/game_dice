@@ -23,6 +23,7 @@ export interface GameActions {
   setCondition: (condition: GameCondition) => void;
   playGame: () => void;
   finishGame: () => void;
+  resetHistory: () => void;
 }
 
 export type GameStore = GameState & GameActions;
