@@ -35,8 +35,8 @@ export const GameHistoryWidget = () => {
       sx={{
         mx: 'auto',
         mt: 2,
-        maxHeight: 320,
-        overflow: 'auto',
+        maxHeight: { xs: 'none', md: 320 },
+        overflow: { xs: 'visible', md: 'auto' },
       }}
     >
       <Table
