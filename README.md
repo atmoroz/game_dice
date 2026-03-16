@@ -74,6 +74,10 @@ src
 
 Clone the repository
 
+```bash
+git clone git@github.com:atmoroz/game_dice.git
+```
+
 Install dependencies:
 
 ```bash
