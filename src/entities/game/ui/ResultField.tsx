@@ -1,8 +1,9 @@
 'use client';
 
-import { Box, Skeleton, Typography } from '@mui/material';
+import { Box, IconButton, Tooltip, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useGameStore } from '../model/store';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 export const ResultField = () => {
   const result = useGameStore(s => s.lastResult);
@@ -47,6 +48,7 @@ export const ResultField = () => {
   return (
     <Box
       sx={{
+        position: 'relative',
         width: 320,
         height: 200,
         borderRadius: 1,
@@ -65,6 +67,27 @@ export const ResultField = () => {
       >
         {displayValue || preview}
       </Typography>
+      <Tooltip
+        sx={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+        }}
+        enterTouchDelay={0}
+        arrow
+        title={
+          <>
+            Choose a number and predict if the dice roll will be higher or
+            lower.
+            <br />
+            Dice generates a number between 1 and 100.
+          </>
+        }
+      >
+        <IconButton size="small">
+          <HelpOutlineIcon fontSize="small" />
+        </IconButton>
+      </Tooltip>
     </Box>
   );
 };

@@ -8,8 +8,10 @@ export const NumberSlider = () => {
   const setThreshold = useGameStore(state => state.setThreshold);
 
   const handleChange = (_: Event, value: number | number[]) => {
-    if (value === 0 || value === 100) return;
-    setThreshold(value as number);
+    const v = value as number;
+
+    const clamped = Math.min(99, Math.max(1, v));
+    setThreshold(clamped as number);
   };
 
   const marks = [
