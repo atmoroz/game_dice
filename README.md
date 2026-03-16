@@ -49,17 +49,19 @@ Result: 73 → **You won**
 
 The project follows **Feature-Sliced Design (FSD)**:
 
+```
 src
 ├── app
 ├── entities
-│ └── game
+│   └── game
 ├── features
-│ ├── choose-condition
-│ └── play-dice
+│   ├── choose-condition
+│   └── play-dice
 ├── widgets
-│ ├── dice-game
-│ └── game-history
+│   ├── dice-game
+│   └── game-history
 └── shared
+```
 
 - **entities** – domain logic
 - **features** – user interactions
